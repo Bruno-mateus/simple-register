@@ -22,6 +22,17 @@ export class CreateClientController{
       }
      })
 
+
+     const testName = new RegExp('/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/')
+
+  if(!testName.test(name)){
+    return res.status(400).json({
+      message: "NOME INVALIDO",
+
+      })
+  }
+   
+
       if(userAlreadyExists){
 
         return res.status(400).json({
