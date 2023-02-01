@@ -13,9 +13,12 @@ import { handleResetInputs } from "../../utils/resetInputs";
 
 const ClientFormSchema = z.object({
     name:z.string().min(3,{
-        message:"O nome tem que ter no minímo de 3 caracteres"
+        message:"O nome tem que ter no minímo de 3 caracteres",
+    }).regex(/^[A-Za-záàâãéèêíïóôõöúçñÁÀÂÃÉÈÍÏÓÔÕÖÚÇÑ ]+$/,{
+        message:"O nome deve conter apenas letras",
 
     }),
+
     birthDate:z.string().refine(date=>new Date(date)<new Date(),{
          message:"Data de nascimento inválida"
     }),
